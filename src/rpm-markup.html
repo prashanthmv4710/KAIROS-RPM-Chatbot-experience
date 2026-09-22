@@ -1,0 +1,38 @@
+
+<div class="device">
+  <div class="phone" id="phone">
+    <div class="camera"></div>
+    <div class="statusbar"><span>9:41</span><div class="status-icons"><span>▮▮▮</span><span>⌁</span><span>▰</span></div></div>
+    <header class="app-header">
+      <div class="header-row">
+        <div class="brand">
+          <div class="spark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="#ffc220" stroke-width="3.2" stroke-linecap="round"><path d="M16 3v7M16 22v7M3 16h7M22 16h7M7 7l5 5M20 20l5 5M25 7l-5 5M12 20l-5 5"/></svg>
+          </div>
+          <div><div class="brand-title">RPM Assistant</div><div class="brand-sub"><span>Remodel execution copilot</span><span>•</span><span id="checkStatus"><span class="status-dot"></span> Not checked in</span></div></div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn lang-btn" id="langBtn" aria-label="Change language" onclick="openLanguageSheet()">EN</button>
+          <button class="icon-btn" aria-label="Restart conversation" onclick="restartConversation()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.7L3 8"/><path d="M3 3v5h5"/></svg>
+          </button>
+        </div>
+      </div>
+      <button class="project-card" id="projectCard" onclick="openProjectSheet()" aria-label="Switch project"></button>
+    </header>
+    <div class="shortcut-bar" id="shortcutBar"></div>
+    <main class="main" id="main"></main>
+    <footer class="inputbar"><button class="quick-btn" aria-label="Scan barcode or tag" onclick="openFlow('receive')" style="background: var(--blue-pale); color: var(--blue-dark); font-size: 16px; margin-right: 2px;">▦</button>
+      <button class="quick-btn" aria-label="Quick actions" onclick="openQuickActions()">+</button>
+      <div class="input-wrap"><input id="assistantInput" type="text" placeholder="Ask about phasing, fixtures, orders…" onkeydown="if(event.key==='Enter')sendAssistantQuery()"></div>
+      <button class="send-btn" aria-label="Send" onclick="sendAssistantQuery()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button>
+    </footer>
+
+    <div class="sheet-overlay" id="sheetOverlay" onclick="if(event.target===this)closeSheet()"><section class="sheet" id="sheet"><div class="sheet-handle"></div><div class="sheet-header"><div class="sheet-title" id="sheetTitle"></div><button class="sheet-close" aria-label="Close" onclick="closeSheet()">×</button></div><div id="sheetSearch"></div><div class="sheet-body" id="sheetBody"></div></section></div>
+
+    <div class="flow-overlay" id="flowOverlay"><section class="flow-panel"><div class="flow-header"><button class="flow-back" id="flowBack" aria-label="Back" onclick="flowBack()">‹</button><div class="flow-header-copy"><div class="flow-title" id="flowTitle"></div><div class="flow-context" id="flowContext"></div></div><button class="flow-close" aria-label="Close" onclick="attemptCloseFlow()">×</button></div><div class="stepper" id="flowStepper"></div><div class="flow-body" id="flowBody"></div><div class="flow-footer" id="flowFooter"></div></section></div>
+
+    <div class="dialog-overlay" id="dialogOverlay"><div class="dialog"><div class="dialog-title" id="dialogTitle"></div><div class="dialog-text" id="dialogText"></div><div class="dialog-actions" id="dialogActions"></div></div></div>
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
