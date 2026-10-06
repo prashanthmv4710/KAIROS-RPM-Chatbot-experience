@@ -21,7 +21,7 @@
       <button class="project-card" id="projectCard" onclick="openProjectSheet()" aria-label="Switch project"></button>
     </header>
     <div class="shortcut-bar" id="shortcutBar"></div>
-    <main class="main" id="main"></main>
+    <div class="main" id="rpm-main" role="region" aria-label="RPM Assistant Content"></div>
     <footer class="inputbar"><button class="quick-btn" aria-label="Scan barcode or tag" onclick="openFlow('receive')" style="background: var(--blue-pale); color: var(--blue-dark); font-size: 16px; margin-right: 2px;">▦</button>
       <button class="quick-btn" aria-label="Quick actions" onclick="openQuickActions()">+</button>
       <div class="input-wrap"><input id="assistantInput" type="text" placeholder="Ask about phasing, fixtures, orders…" onkeydown="if(event.key==='Enter')sendAssistantQuery()"></div>

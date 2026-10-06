@@ -143,8 +143,8 @@ function renderShortcuts(){
 function pageHead(title,sub=''){return `<div class="page-head"><button class="back-btn" onclick="back()" aria-label="Back">‹</button><div><div class="page-title">${esc(title)}</div>${sub?`<div class="page-sub">${esc(sub)}</div>`:''}</div></div>`}
 function badge(text,cls){return `<span class="badge ${cls}">${esc(text)}</span>`}
 function progress(pct,kind='blue'){return `<div class="progress-row"><div class="progress ${kind}"><span style="width:${Math.max(0,Math.min(100,pct))}%"></span></div><div class="progress-label">${pct}%</div></div>`}
-function go(screen,params={},replace=false){if(!replace)navHistory.push(deepClone(currentView));currentView={screen,params};renderAll();document.getElementById('main').scrollTop=0}
-function back(){if(navHistory.length){currentView=navHistory.pop();renderAll();document.getElementById('main').scrollTop=0}else go('home',{},true)}
+function go(screen,params={},replace=false){if(!replace)navHistory.push(deepClone(currentView));currentView={screen,params};renderAll();document.getElementById('rpm-main').scrollTop=0}
+function back(){if(navHistory.length){currentView=navHistory.pop();renderAll();document.getElementById('rpm-main').scrollTop=0}else go('home',{},true)}
 function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
 function showDialog(title,text,actions){
   document.getElementById('dialogTitle').textContent=title;document.getElementById('dialogText').textContent=text;
@@ -155,7 +155,7 @@ function closeDialog(){document.getElementById('dialogOverlay').classList.remove
 function showSheet(title,body,search=''){sheetMode=title;document.getElementById('sheetTitle').textContent=title;document.getElementById('sheetBody').innerHTML=body;document.getElementById('sheetSearch').innerHTML=search;document.getElementById('sheetOverlay').classList.add('open')}
 function closeSheet(){document.getElementById('sheetOverlay').classList.remove('open');sheetMode=null}
 function renderCurrentView(){
-  const main=document.getElementById('main');
+  const main=document.getElementById('rpm-main');
   const map={home:renderHome,phasing:renderPhasing,risk:renderRisk,department:renderDepartment,fixtures:renderFixtures,orders:renderOrders,tasks:renderTasks,task:renderTaskDetail,team:renderTeam,contacts:renderContacts,blockers:renderBlockers,blocker:renderBlockerDetail,updates:renderUpdates,help:renderHelp};
   main.innerHTML=(map[currentView.screen]||renderHome)(currentView.params||{});
 }
@@ -168,7 +168,7 @@ function renderHome(){
   let html=`
     <div style="margin: 4px 0 16px 0; padding: 14px 16px; background: white; border-radius: 14px; border: 1px solid var(--line-soft); box-shadow: var(--shadow);">
       <div style="font-size: 26px; font-weight: 850; color: var(--blue-dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 12px;">
-        Hi [' + esc(p.rpm.split(' ')[0]) + '],<br>how can I help you today?
+        Hi [${esc(p.rpm.split(' ')[0])}],<br>how can I help you today?
       </div>
       <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;" role="group" aria-label="Suggested Prompts">
         <button type="button" onclick="sendAssistantQuery('View my department schedule')" class="chip" style="height: auto; padding: 8px 14px; border-radius: 20px; font-size: 12px; border: 1px solid #d9e8f8;">View my department schedule</button>

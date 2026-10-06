@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:html": "tsc -b && vite build --config vite.singlefile.config.ts",
     "preview": "vite preview",
     "postinstall": "playwright install chromium || true",
     "ld": "node scripts/ld/cli.mjs",
