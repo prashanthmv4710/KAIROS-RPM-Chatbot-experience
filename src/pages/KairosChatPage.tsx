@@ -20,6 +20,7 @@ import {
 
 // Fixed "today" for demo purposes, matching the seeded project dates.
 const DEMO_TODAY = '2026-09-21';
+const PROTOTYPE_HUB_URL = 'https://puppy.walmart.com/sharing/p0b05bu/prototype-hub';
 
 type MessageType =
   | 'schedule'
@@ -319,7 +320,8 @@ export function KairosChatPage() {
   return (
     <Page title="KAIROS Chat Experience — Squiggly Assistant" titleVisuallyHidden>
       {/* Background Frame */}
-      <div className="min-h-screen bg-slate-100 flex items-center justify-center p-3 sm:p-6 font-sans">
+      <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-between p-3 sm:p-6 font-sans">
+        <div className="flex-1 flex items-center justify-center w-full">
 
         {/* Mobile Device Frame based on Figma 8568:5825 */}
         <div className="w-full max-w-[420px] h-[890px] bg-white rounded-[44px] shadow-2xl ring-1 ring-slate-900/10 flex flex-col overflow-hidden relative">
@@ -1315,6 +1317,23 @@ export function KairosChatPage() {
             </div>
           </div>
         </Modal>
+        </div>
+
+        {/* Footer with link back to Prototype Hub */}
+        <footer
+          className="w-full text-center py-3 text-xs text-slate-500 font-sans select-none"
+        >
+          Shared prototype &middot;{' '}
+          <a
+            href={PROTOTYPE_HUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Open ${PROTOTYPE_HUB_URL} in a new tab`}
+            className="text-slate-600 underline hover:text-slate-900 transition-colors"
+          >
+            Back to Prototype Hub
+          </a>
+        </footer>
       </div>
     </Page>
   );
